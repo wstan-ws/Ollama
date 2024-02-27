@@ -1,0 +1,18 @@
+<div class="chat">
+    <mat-list>
+        <mat-list-item *ngFor="let message of messages">
+            <div mat-line>
+                <strong>{{ message.sender }}:</strong> {{ message.text }}
+            </div>
+        </mat-list-item>
+    </mat-list>
+</div>
+
+<form [formGroup]="messageForm" (submit)="sendMessage()">
+    <mat-form-field appearance="fill">
+        <input matInput formControlName="text" placeholder="Type a message here...">
+        <mat-error *ngIf="messageForm?.get('text')?.invalid">Message is invalid</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit">Send</button>
+</form>
